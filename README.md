@@ -1,42 +1,41 @@
-# Asahi Linux Plymouth Theme
+# Hikari Linux Plymouth theme
 
-This is a Plymouth theme for the Asahi Linux distribution for Apple Silicon Macs.
-It's probably janky as hell.
+A boot splash with the approved Hikari Linux logo, an animated spinner,
+progress bar, and boot messages. The logo and spinner are vector SVG sources;
+Plymouth's required PNG assets are generated at build time with `rsvg-convert`.
 
+## Build and install
 
-## Installing (for Arch-based distros)
-You should have Plymouth installed and hooked into your initrd.
+Install GNU make, coreutils, and librsvg's command-line tools, then run:
 
-1. Clone this repo somewhere.
-2. Copy the `asahi` folder to `/usr/share/plymouth/themes/`.
-3. Run `plymouth-set-default-theme -R asahi` as root.
-Note that this procedure works for Arch and its forks. Adding -R
-rebuilds the initrd automatically. For other distros, you will have to
-figure out how to set your Plymouth theme and update the initrd yourself.
+```sh
+make
+make install PREFIX=/usr DESTDIR="$pkgdir"
+```
 
-## Testing
-1. Run `plymouthd --no-daemon --debug` as root in tty2.
-2. Run `plymouth show-splash` in tty3. The splash screen
-will appear in tty1.
-* Running `plymouth` with no arguments will give you a list of
-modes and parameters you can test.
+After installing the package on the target system, select the `hikari` theme
+and rebuild the initramfs using the distribution's normal procedure. For a
+system configured for `plymouth-set-default-theme`:
 
-## What works
-* The Asahi Linux logo shows up
-* The beachball spins
-* The progress bar fills up while booting
-* Boot time messages appear below the progress bar
+```sh
+sudo plymouth-set-default-theme -R hikari
+```
 
-## Yet to be implemented
-Password/text entry (required for users with LUKS-encrypted disks, etc.).
-I had a go at this myself, but I could not get it to work at all. Every other
-Plymouth theme just copies the reference script, however
-* It's an uninteligible spaghettified mess
-* I refuse to copy code that is not mine and I do not understand
-Please feel free to fork this repo and come up with a solution yourself.
+The retained script does not implement password or text entry. Do not select
+this theme for a boot flow that requires a Plymouth password prompt.
 
-## Attributions
-* The Asahi Linux logo was created by <a href="https://soundflora.tokyo/">soundflora*</a> and <a href="https://github.com/marcan/">Hector Martin</a>. It is available under the CC BY-SA 4.0 license.
+To preview on a test Linux console, start `plymouthd --no-daemon --debug` and
+run `plymouth show-splash` from a second console. Hardware boot/display behavior
+has not been validated by this rebrand.
 
-* The Apple-like beachball is available for free for non-commercial use from
-<a href="https://pngwing.com">PNGWing</a>.
+## Origin and license
+
+Based on the preserved [asahi-plymouth snapshot](https://github.com/HikariLinux/asahi-plymouth/tree/09dc321286f38757c759566a58c9b95bf088cc44),
+commit `09dc321286f38757c759566a58c9b95bf088cc44`. Original history and snapshot tags are retained.
+Hikari Linux maintains this project independently; this is not an official
+Asahi Linux release. Original copyright and license notices are preserved.
+Hikari Linux changes use the same [MIT license](LICENSE).
+
+The Hikari logo and spinner are MIT-licensed. The historical Asahi logo and
+third-party beachball are replaced in the active theme; their original files
+and attributions remain available in the preserved snapshot.

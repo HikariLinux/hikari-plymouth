@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>Hikari Linux loading spinner</title>
+  <circle cx="64" cy="64" r="42" stroke="#425A68" stroke-width="10"/>
+  <path d="M64 22a42 42 0 0 1 42 42" stroke="#F0AB62" stroke-width="10" stroke-linecap="round"/>
+</svg>

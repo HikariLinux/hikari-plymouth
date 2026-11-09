@@ -1,8 +1,8 @@
 /* SPDX-License-Identifier: MIT */
 
-/* Asahi Linux Plymouth Theme
+/* Hikari Linux Plymouth Theme
  *
- * This theme emulates the macOS boot splash, with the Asahi logo
+ * This theme emulates the macOS boot splash, with the Hikari logo
  * replacing the Apple logo.
  *
  *
@@ -88,7 +88,7 @@ fun init() {
     Window.SetBackgroundTopColor(0.0, 0.0, 0.0);
     Window.SetBackgroundBottomColour(0.0, 0.0, 0.0);
 
-    logo.image = Image("asahi.png");
+    logo.image = Image("hikari.png");
     logo.image = logo.image.Scale(logo.image.GetWidth() * 0.5, logo.image.GetHeight() * 0.5);
     logo.sprite = Sprite(logo.image);
     logo.x = ((width / 2) - (logo.image.GetWidth() / 2));
@@ -96,8 +96,8 @@ fun init() {
     logo.sprite.SetPosition(logo.x, logo.y, 1000);
     logo.sprite.SetOpacity(1);
 
-    /* Initialise Apple beachball*/
-    ball.image = Image("beachball.png");
+    /* Initialise spinner */
+    ball.image = Image("spinner.png");
     ball.image = ball.image.Scale(ball.image.GetWidth() * 0.5, ball.image.GetHeight() * 0.5);
     ball.sprite = Sprite(rotate_ball(0));
     ball.x = ((width / 2) - (ball.image.GetWidth() / 2));
